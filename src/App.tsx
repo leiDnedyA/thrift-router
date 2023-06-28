@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, useMap, Popup, Marker, useMapEvent, useMapEvents } from 'react-leaflet'
-import { LatLngExpression, LatLngTuple } from 'leaflet';
+import { LatLngTuple } from 'leaflet';
 import { calculateDistance } from './util/GeoUtils';
+import { findStoresByRadius } from './util/StoreLookup';
 import './App.css'
 
 function UserLocationTracker() {
@@ -44,6 +45,11 @@ function App() {
         />
         <UserLocationTracker />
       </MapContainer></div>
+      <button className="ui-overlay"
+        onClick={()=>{
+          findStoresByRadius([42.35473890249456, -71.06588088070338], 1000)
+          .then(res=>{console.log(res)})
+        }}>Get thrifts</button>
     </>
   )
 }

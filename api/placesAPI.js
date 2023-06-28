@@ -1,4 +1,6 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 /**
  * Makes a request to a places API to find thrift shops
@@ -24,4 +26,4 @@ async function thriftsWithinRadius(latLng, radius) {
     })
 }
 
-module.exports = {thriftsWithinRadius}
+export {thriftsWithinRadius}
