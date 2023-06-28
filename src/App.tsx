@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, useMap, Popup, Marker, useMapEvent, useMapEvents } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, useMapEvents, Tooltip } from 'react-leaflet'
 import { LatLngTuple } from 'leaflet';
 import { calculateDistance } from './util/GeoUtils';
-import { findStoresByRadius } from './util/StoreLookup';
 import './App.css'
+import { ControlsUI } from './components/ControlsUI';
 
 function UserLocationTracker() {
   const [location, setLocation] = useState<LatLngTuple>([42.3680891432082, -71.09465827268468]);
@@ -32,7 +32,7 @@ function UserLocationTracker() {
   });
   useEffect(fetchUserLocation);
 
-  return <Marker position={location}></Marker>
+  return <Marker position={location}><Tooltip>You are here.</Tooltip></Marker>
 }
 
 function App() {
@@ -44,12 +44,8 @@ function App() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <UserLocationTracker />
+        <ControlsUI userPosition={[41.95036934505278, -71.37626726475337]} />
       </MapContainer></div>
-      <button className="ui-overlay"
-        onClick={()=>{
-          findStoresByRadius([42.35473890249456, -71.06588088070338], 1000)
-          .then(res=>{console.log(res)})
-        }}>Get thrifts</button>
     </>
   )
 }
