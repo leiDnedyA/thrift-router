@@ -11,10 +11,13 @@ interface Place {
 
 function ControlsUI(props: { userPosition: LatLngTuple }) {
     const [markers, setMarkers] = useState<Marker[]>([]);
+    const [places, setPlaces] = useState<Place[]>([]);
     const map = useMap();
     return <>
         <div className="ui-overlay-container">
+            <h2 className='controls-header'>Thrift Router</h2>
             <button
+                className='button-50'
                 onClick={() => {
                     findStoresByRadius(props.userPosition, 10000)
                         .then(foundStores => {
@@ -35,6 +38,7 @@ function ControlsUI(props: { userPosition: LatLngTuple }) {
                                 newMarkers.push(marker);
                             })
 
+                            setPlaces(places);
                             setMarkers(newMarkers)
                         })
                 }}>Plot Local Thrifts</button>
