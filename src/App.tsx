@@ -6,6 +6,16 @@ import './App.css'
 import { ControlsUI } from './components/ControlsUI';
 import { LocationContext } from './context/LocationContext';
 
+/**
+ * TODO:
+ * 
+ * - Find dark mode map tiles and use those
+ * - Figure out routing solution
+ * - Add user controls for radius
+ * - Switch to Google Places api (way better)
+ * 
+ */
+
 function UserLocationTracker() {
   const locationContext = useContext(LocationContext);
   

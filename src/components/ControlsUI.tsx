@@ -38,10 +38,20 @@ function ControlsUI(props: { userPosition: LatLngTuple }) {
                                 newMarkers.push(marker);
                             })
 
-                            setPlaces(places);
+                            setPlaces(foundStores);
                             setMarkers(newMarkers)
                         })
                 }}>Plot Local Thrifts</button>
+                {places.map((place, index)=>{
+                    /**
+                     * TODO: - make it so that the respective marker gets highlighted
+                     *         in some way when user hovers over place text, and vice
+                     *         versa
+                     *       - come up with better style for places list
+                     */
+                    const searchLink = `https://www.google.com/search?q=${encodeURIComponent(`${place.name} ${place.position[0]},${place.position[1]}`)}`;
+                    return <p key={index}><a href={searchLink}>{place.name}</a></p>
+                })}
         </div>
     </>
 }
