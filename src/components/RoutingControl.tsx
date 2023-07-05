@@ -23,10 +23,12 @@ const RoutingControl: React.FC<RoutingControlProps> = ({ map, places}) => {
 
     useEffect(() => {
         if (map) {
+            const waypoints = placesToWaypoints(places);
             // Create a routing control instance
             const control = L.Routing.control({
-                waypoints: placesToWaypoints(places),
-                routeWhileDragging: false
+                waypoints: waypoints,
+                routeWhileDragging: false,
+                plan: new L.Routing.Plan(waypoints, {createMarker: () => false})
             }).addTo(map);
             controlRef.current = control;
             control.hide();
