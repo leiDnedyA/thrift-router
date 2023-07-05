@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { MapContainer, TileLayer, Marker, useMapEvents, Tooltip } from 'react-leaflet'
 import { LatLngTuple } from 'leaflet';
 import { calculateDistance } from './util/GeoUtils';
@@ -10,7 +10,12 @@ import { LocationContext } from './context/LocationContext';
  * TODO:
  * 
  * - Figure out routing solution
+ * 
  * - Add user controls for radius
+ * 
+ * - Either do reverse geolocation or add 
+ *   optional addresses the places interface
+ * 
  * - Switch to Google Places api (way better)
  * 
  */
