@@ -2,14 +2,15 @@ import { useMap } from 'react-leaflet';
 import { findStoresByRadius } from '../util/StoreLookup';
 import './ControlsUI.css'
 import { LatLngTuple, Marker } from 'leaflet';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import RoutingControl from './RoutingControl';
+import { Place } from './Place';
+import { LocationContext } from '../context/LocationContext';
 
-interface Place {
-    name: string,
-    position: LatLngTuple
-}
-
-function ControlsUI(props: { userPosition: LatLngTuple }) {
+function ControlsUI() {
+    const locationContext = useContext(LocationContext);
+    const { location } = locationContext;
+    
     const [markers, setMarkers] = useState<Marker[]>([]);
     const [places, setPlaces] = useState<Place[]>([]);
     const map = useMap();
@@ -19,7 +20,7 @@ function ControlsUI(props: { userPosition: LatLngTuple }) {
             <button
                 className='button-50'
                 onClick={() => {
-                    findStoresByRadius(props.userPosition, 10000)
+                    findStoresByRadius(location, 10000)
                         .then(foundStores => {
 
                             console.log(foundStores)
@@ -52,6 +53,7 @@ function ControlsUI(props: { userPosition: LatLngTuple }) {
                     const searchLink = `https://www.google.com/search?q=${encodeURIComponent(`${place.name} ${place.position[0]},${place.position[1]}`)}`;
                     return <p key={index}><a href={searchLink}>{place.name}</a></p>
                 })}
+                <RoutingControl map={map} places={places}/>
         </div>
     </>
 }

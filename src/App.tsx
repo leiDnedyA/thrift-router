@@ -33,10 +33,8 @@ function UserLocationTracker() {
         const newLocation: LatLngTuple = [position.coords.latitude, position.coords.longitude];
         const distance = calculateDistance(location, newLocation);
         const MIN_MOVE_DISTANCE = 50;
-        console.log(distance);
         if (distance > MIN_MOVE_DISTANCE) {
           updateLocation([newLocation[0], newLocation[1]]);
-          console.log(location);
           map.setView(newLocation);
         }
       },
@@ -61,13 +59,13 @@ function App() {
 
   return (
     <>
-      <div className="map"><MapContainer center={location} zoom={13}>
+      <div className="map"><MapContainer center={location} zoom={13} maxZoom={18} minZoom={8}>
         <TileLayer
           attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
           url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
         />
         <UserLocationTracker />
-        <ControlsUI userPosition={[41.95036934505278, -71.37626726475337]} />
+        <ControlsUI />
       </MapContainer></div>
     </>
   )
