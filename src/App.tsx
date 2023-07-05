@@ -9,7 +9,6 @@ import { LocationContext } from './context/LocationContext';
 /**
  * TODO:
  * 
- * - Find dark mode map tiles and use those
  * - Figure out routing solution
  * - Add user controls for radius
  * - Switch to Google Places api (way better)
@@ -59,8 +58,8 @@ function App() {
     <>
       <div className="map"><MapContainer center={location} zoom={13}>
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+          url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
         />
         <UserLocationTracker />
         <ControlsUI userPosition={[41.95036934505278, -71.37626726475337]} />
