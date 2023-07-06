@@ -9,9 +9,16 @@ import { LocationContext } from './context/LocationContext';
 /**
  * TODO:
  * 
+ * - Add loading text after button clicked
+ * 
+ * - Add a max height to UI
+ * 
  * - Figure out routing solution
  * 
  * - Add user controls for radius
+ * 
+ * - Make it so that if the radius is big enough mutiple points are
+ *   queried together to make a big list
  * 
  * - Either do reverse geolocation or add 
  *   optional addresses the places interface
@@ -24,13 +31,13 @@ function UserLocationTracker() {
   const locationContext = useContext(LocationContext);
   
   const {location, updateLocation} = locationContext;
-  
-  // const [location, setLocation] = useState<LatLngTuple>([42.3680891432082, -71.09465827268468]);
 
-  const fetchUserLocation = () => {
-    navigator.geolocation.getCurrentPosition(
+  const watchUserLocation = () => {
+    navigator.geolocation.watchPosition(
       (position) => {
+        console.log('new position...')
         const newLocation: LatLngTuple = [position.coords.latitude, position.coords.longitude];
+        // const newLocation: LatLngTuple = [42.3680891432082, -71.09465827268468]; // Test coords (cambridge, ma)
         const distance = calculateDistance(location, newLocation);
         const MIN_MOVE_DISTANCE = 50;
         if (distance > MIN_MOVE_DISTANCE) {
@@ -45,9 +52,9 @@ function UserLocationTracker() {
   };
 
   const map = useMapEvents({
-    'load': fetchUserLocation
+    'load': watchUserLocation
   });
-  useEffect(fetchUserLocation);
+  useEffect(watchUserLocation);
 
   return <Marker position={location}><Tooltip>You are here.</Tooltip></Marker>
 }
@@ -61,9 +68,16 @@ function App() {
     <>
       <div className="map"><MapContainer center={location} zoom={13} maxZoom={18} minZoom={8}>
         <TileLayer
+          attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+
+          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {/* ^ Stable but ugly */}
+        {/* v Unstable but pretty (dark mode) */}
+        {/* <TileLayer
           attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
           url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
-        />
+        /> */}
         <UserLocationTracker />
         <ControlsUI />
       </MapContainer></div>

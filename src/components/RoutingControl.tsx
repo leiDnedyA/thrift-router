@@ -46,12 +46,12 @@ const RoutingControl: React.FC<RoutingControlProps> = ({ map, places}) => {
         if (map && places && controlRef.current) {
             var waypoints = placesToWaypoints(places);
             if (location) {
-                waypoints = waypoints.concat(new L.LatLng(location[0], location[1]));
+                waypoints.unshift(new L.LatLng(location[0], location[1]));
             }
             controlRef.current.setWaypoints(waypoints);
             controlRef.current.route();
         }
-    }, [places]);
+    }, [places, location]);
 
     return null;
 };
