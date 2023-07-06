@@ -13,6 +13,8 @@ import { LocationContext } from './context/LocationContext';
  * 
  * - Add a max height to UI
  * 
+ * - disable drag routing
+ * 
  * - Figure out routing solution
  * 
  * - Add user controls for radius

@@ -28,6 +28,7 @@ const RoutingControl: React.FC<RoutingControlProps> = ({ map, places}) => {
             const control = L.Routing.control({
                 waypoints: waypoints,
                 routeWhileDragging: false,
+                addWaypoints: false,
                 plan: new L.Routing.Plan(waypoints, {createMarker: () => false})
             }).addTo(map);
             controlRef.current = control;

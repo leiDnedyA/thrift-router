@@ -3,6 +3,7 @@
     border-radius: 3px;
     background-color: #fff;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
+    max-height: 60%;
 
     position: absolute;
     top: 10px;
@@ -11,6 +12,10 @@
 
     display: flex;
     flex-direction: column;
+}
+
+.thrift-list {
+    overflow-y: scroll;
 }
 
 .controls-header {
