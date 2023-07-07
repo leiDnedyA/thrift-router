@@ -26,6 +26,10 @@ import { UserLocationTracker } from './components/UserLocationTracker';
  * 
  * - Switch to Google Places api (way better)
  * 
+ * - Pimp out the readme for the repo
+ * 
+ * - Get project hosted
+ * 
  */
 
 
