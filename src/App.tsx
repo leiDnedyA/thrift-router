@@ -9,13 +9,11 @@ import { LocationContext } from './context/LocationContext';
 /**
  * TODO:
  * 
+ * - Add link to google maps / apple maps IMPORTANT!
+ * 
  * - Add loading text after button clicked
  * 
- * - Add a max height to UI
- * 
- * - disable drag routing
- * 
- * - Figure out routing solution
+ * - Fix janky map controls (implement it correctly with react leaflet)
  * 
  * - Add user controls for radius
  * 
@@ -24,6 +22,7 @@ import { LocationContext } from './context/LocationContext';
  * 
  * - Either do reverse geolocation or add 
  *   optional addresses the places interface
+ * 
  * 
  * - Switch to Google Places api (way better)
  * 
@@ -68,7 +67,7 @@ function App() {
 
   return (
     <>
-      <div className="map"><MapContainer center={location} zoom={13} maxZoom={18} minZoom={8}>
+      <div className="map"><MapContainer center={location} zoom={13} maxZoom={18} minZoom={5}>
         <TileLayer
           attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 
