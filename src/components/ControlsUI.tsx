@@ -4,7 +4,7 @@ import './ControlsUI.css'
 import { Marker } from 'leaflet';
 import { useContext, useState } from 'react';
 import RoutingControl from './RoutingControl';
-import { Place } from './Place';
+import { Place } from '../util/Place';
 import { LocationContext } from '../context/LocationContext';
 import { SiGooglemaps, SiApple } from 'react-icons/si';
 

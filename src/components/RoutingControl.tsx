@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef } from 'react';
 import L, { Map, Marker, control } from 'leaflet';
 import 'leaflet-routing-machine';
 import './RoutingControls.css';
-import { Place } from './Place';
+import { Place } from '../util/Place';
 import { LocationContext } from '../context/LocationContext';
 
 interface RoutingControlProps {
