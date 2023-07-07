@@ -9,10 +9,6 @@ import { LocationContext } from './context/LocationContext';
 /**
  * TODO:
  * 
- * - Add link to google maps / apple maps IMPORTANT!
- * 
- * - Add loading text after button clicked
- * 
  * - Fix janky map controls (implement it correctly with react leaflet)
  * 
  * - Add user controls for radius
@@ -23,6 +19,12 @@ import { LocationContext } from './context/LocationContext';
  * - Either do reverse geolocation or add 
  *   optional addresses the places interface
  * 
+ *  
+ * - make it auto route on location change
+ * - make a button to toggle auto-centering on the user location
+ * - change center of map on mobile (gets blocked by gui)
+ * - switch button to say “reroute” instead
+ * - switch links to website if available 
  * 
  * - Switch to Google Places api (way better)
  * 

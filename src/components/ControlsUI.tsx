@@ -58,7 +58,7 @@ function ControlsUI() {
                     const searchLink = `https://www.google.com/search?q=${encodeURIComponent(`${place.name} ${place.position[0]},${place.position[1]}`)}`;
                     return <p key={index}><a href={searchLink}>{place.name}</a></p>
                 })}</div>
-            <button className='google-maps-button button-50'
+            <button className='link-button button-59'
                 onClick={() => {
                     const coordsURLFragment = places.reduce((accum, currPlace) => {
                         const pos = currPlace.position;
@@ -66,8 +66,8 @@ function ControlsUI() {
                     }, "");
                     const googleMapsLink = `https://www.google.com/maps/dir//${coordsURLFragment}`;
                     window.open(googleMapsLink, '_blank');
-                }}><SiGooglemaps/> Google Maps</button>
-            <button className='apple-maps-button button-50'
+                }}><SiGooglemaps /> Google Maps</button>
+            <button className='link-button button-59'
                 onClick={() => {
                     const coordsURLFragment = places.reduce((accum, currPlace) => {
                         const pos = currPlace.position;
@@ -75,7 +75,7 @@ function ControlsUI() {
                     }, "");
                     const appleMapsLink = `http://maps.apple.com/?saddr=Current+Location${coordsURLFragment}`;
                     window.open(appleMapsLink, '_blank');
-                }}><SiApple/> Apple Maps</button>
+                }}><SiApple /> Apple Maps</button>
             <RoutingControl map={map} places={places} />
         </div>
     </>
