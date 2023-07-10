@@ -8,7 +8,7 @@ import { UserLocationTracker } from './components/UserLocationTracker';
 /**
  * TODO:
  * 
- * - make a button to toggle auto-centering on the user location
+ * - fix and test toggle button (is it caused by Leaflet Routing Machine?)
  * 
  * - Either do reverse geolocation or add 
  *   optional addresses the places interface and REST api

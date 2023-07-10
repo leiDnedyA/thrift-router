@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef } from 'react';
-import L, { Map, Marker, control } from 'leaflet';
+import L, { Map } from 'leaflet';
 import 'leaflet-routing-machine';
 import './RoutingControls.css';
 import { Place } from '../util/Place';
@@ -29,6 +29,7 @@ const RoutingControl: React.FC<RoutingControlProps> = ({ map, places}) => {
                 waypoints: waypoints,
                 routeWhileDragging: false,
                 addWaypoints: false,
+                fitSelectedRoutes: false,
                 plan: new L.Routing.Plan(waypoints, {createMarker: () => false})
             }).addTo(map);
             controlRef.current = control;
