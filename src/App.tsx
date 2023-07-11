@@ -8,7 +8,7 @@ import { UserLocationTracker } from './components/UserLocationTracker';
 /**
  * TODO:
  * 
- * - fix and test toggle button (is it caused by Leaflet Routing Machine?)
+ * - add prompt for user to provide location if they don't
  * 
  * - Either do reverse geolocation or add 
  *   optional addresses the places interface and REST api

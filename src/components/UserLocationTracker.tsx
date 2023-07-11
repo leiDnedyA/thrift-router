@@ -35,10 +35,18 @@ export function UserLocationTracker() {
         );
     };
 
+    type InitInteractionEvent = LeafletMouseEvent | LeafletKeyboardEvent | TouchEvent | undefined;
 
-    const stopFollowingUser = (e: LeafletMouseEvent | LeafletKeyboardEvent | undefined) => {
+    const stopFollowingUser = (e: InitInteractionEvent) => {
         if (e) { // Return if target is not the leaflet container
-            const target = e.originalEvent.target;
+            var target;
+            
+            if (e instanceof TouchEvent) {
+                target = e.target;
+            } else { // Assuming e is either LeafletMousEvent or LeafletKeyboardEvent
+                target = e.originalEvent.target;
+            }
+
             if (target instanceof Element) {
                 if (!target.classList.contains("leaflet-container")) {
                     return;
@@ -66,6 +74,7 @@ export function UserLocationTracker() {
         zoomend: fixZoomCenter
     });
 
+    document.addEventListener('touchstart', stopFollowingUser);
 
     useEffect(watchUserLocation, []);
 
