@@ -20,7 +20,19 @@ async function thriftsWithinRadius(latLng, radius) {
     .then(res=>res.json())
     .then(result=>{
         return result.features.reduce((accumulator, curr)=>{
-            accumulator.push({name: curr.properties.name, position: [curr.properties.lat, curr.properties.lon]});
+            console.log(curr);
+            const currProps = curr.properties;
+            const currPlace = {
+                name: currProps.name,
+                position: [currProps.lat, currProps.lon]
+            };
+            if (currProps.hasOwnProperty("address_line1") && currProps.hasOwnProperty("address_line2")) {
+                currPlace.address = {
+                    "line1" : currProps.address_line1,
+                    "line2": currProps.address_line2
+                }
+            }
+            accumulator.push(currPlace);
             return accumulator;
         }, []);
     })

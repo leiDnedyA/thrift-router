@@ -8,7 +8,7 @@ import { UserLocationTracker } from './components/UserLocationTracker';
 /**
  * TODO:
  * 
- * - add prompt for user to provide location if they don't
+ * - Spend like a half hour refactoring
  * 
  * - Either do reverse geolocation or add 
  *   optional addresses the places interface and REST api
