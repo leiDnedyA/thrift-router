@@ -10,7 +10,7 @@ interface LocationContextProps {
     updateLocation: (newLocation: LatLngTuple) => void;
 }
 
-export const LocationContext = createContext<LocationContextProps>({ location: defaultLocation, updateLocation: (location: LatLngTuple) => {} });
+export const LocationContext = createContext<LocationContextProps>({ location: defaultLocation, updateLocation: (/* location: LatLngTuple */) => {} });
 
 interface ProviderProps {
     children: React.ReactNode
