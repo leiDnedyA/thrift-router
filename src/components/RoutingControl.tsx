@@ -8,31 +8,31 @@ import { LocationContext } from '../context/LocationContext';
 interface RoutingControlProps {
     map: Map | null;
     places: Place[],
-    location? : Place
+    location?: Place
 }
 
-const RoutingControl: React.FC<RoutingControlProps> = ({ map, places}) => {
+const placesToWaypoints = (ps: Place[]): L.LatLng[] => ps.map(p => new L.LatLng(...p.position));
+
+const RoutingControl: React.FC<RoutingControlProps> = ({ map, places }) => {
     const locationContext = useContext(LocationContext);
     const { location } = locationContext;
-    
-    const controlRef = useRef<L.Routing.Control | null>(null);
 
-    const placesToWaypoints = (ps: Place[]): L.LatLng[] => ps.map(
-        p => new L.LatLng(p.position[0], p.position[1])
-    );
+    const controlRef = useRef<L.Routing.Control | null>(null);
 
     useEffect(() => {
         if (map) {
             const waypoints = placesToWaypoints(places);
-            // Create a routing control instance
+
             const control = L.Routing.control({
                 waypoints: waypoints,
                 routeWhileDragging: false,
                 addWaypoints: false,
-                plan: new L.Routing.Plan(waypoints, {createMarker: () => false})
+                plan: new L.Routing.Plan(waypoints, { createMarker: () => false })
             }).addTo(map);
+
             controlRef.current = control;
             control.hide();
+
             return () => {
                 // Clean up the control when the component is unmounted
                 if (controlRef.current) {

@@ -10,18 +10,17 @@ import './UserLocationTracker.css'
 export function UserLocationTracker() {
     const locationContext = useContext(LocationContext);
     const { location, updateLocation } = locationContext;
+
     const [isFollowing, setIsFollowing] = useState(true);
     const isFollowingRef = useRef<boolean>();
-
     isFollowingRef.current = isFollowing;
 
-    const watchUserLocation = () => {
+    function watchUserLocation() {
         navigator.geolocation.watchPosition(
             (position) => {
                 const newLocation: LatLngTuple = [position.coords.latitude, position.coords.longitude];
-                // const newLocation: LatLngTuple = [42.3680891432082, -71.09465827268468]; // Test coords (cambridge, ma)
                 const distance = calculateDistance(location, newLocation);
-                const MIN_MOVE_DISTANCE = 50;
+                const MIN_MOVE_DISTANCE = 10;
                 if (distance > MIN_MOVE_DISTANCE) {
                     updateLocation([newLocation[0], newLocation[1]]);
                     if (isFollowingRef.current) {
@@ -29,18 +28,16 @@ export function UserLocationTracker() {
                     }
                 }
             },
-            (error) => {
-                console.error(error);
-            }
+            (error) => { console.error(error); }
         );
-    };
+    }
 
     type InitInteractionEvent = LeafletMouseEvent | LeafletKeyboardEvent | TouchEvent | undefined;
 
     const stopFollowingUser = (e: InitInteractionEvent) => {
         if (e) { // Return if target is not the leaflet container
-            var target;
-            
+            let target;
+
             if (e instanceof TouchEvent) {
                 target = e.target;
             } else { // Assuming e is either LeafletMousEvent or LeafletKeyboardEvent
@@ -48,7 +45,9 @@ export function UserLocationTracker() {
             }
 
             if (target instanceof Element) {
-                if (!target.classList.contains("leaflet-container")) {
+                const isMapContainer = target.classList.contains("leaflet-container");
+                const isMarkerIcon = target.classList.contains("leaflet-marker-icon")
+                if (!(isMapContainer || isMarkerIcon)) {
                     return;
                 }
             }
@@ -63,7 +62,7 @@ export function UserLocationTracker() {
             startFollowingUser();
         }
     }
-    
+
     const startFollowingUser = () => {
         map.setView(location);
     }
@@ -80,12 +79,15 @@ export function UserLocationTracker() {
 
     return <>
         <Marker position={location}><Tooltip>You are here.</Tooltip></Marker>
-        <button id="auto-center-toggle" className={'icon-button ' + (isFollowing ? 'icon-button-active' : '')}
+        <button
+            id="auto-center-toggle"
+            className={'icon-button ' + (isFollowing ? 'icon-button-active' : '')}
             onClick={() => {
-                if (!isFollowing) {
-                    startFollowingUser();
-                }
+                if (!isFollowing) { startFollowingUser(); }
                 setIsFollowing(!isFollowing);
-            }}><IoPaperPlane /></button>
+            }}
+        >
+            <IoPaperPlane />
+        </button>
     </>
 }

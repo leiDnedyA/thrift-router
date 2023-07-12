@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { MapContainer, TileLayer} from 'react-leaflet'
 import './App.css'
-import { ControlsUI } from './components/ControlsUI';
+import { AppControls } from './components/AppControls';
 import { LocationContext } from './context/LocationContext';
 import { UserLocationTracker } from './components/UserLocationTracker';
 
@@ -10,10 +10,16 @@ import { UserLocationTracker } from './components/UserLocationTracker';
  * 
  * - Spend like a half hour refactoring
  * 
- * - Either do reverse geolocation or add 
- *   optional addresses the places interface and REST api
+ * - Improve the design
+ *   - Find some dark mode map tiles
+ *   - Fix ugly button spacing
  * 
- * - Fix janky map controls (implement it correctly with react leaflet)
+ * - Fix scrolling on UI
+ * 
+ * - Pimp out the readme for the repo
+ * 
+ * - Get project hosted
+ * 
  * 
  * - Add checkboxes for user to include/exclude places
  * 
@@ -26,9 +32,6 @@ import { UserLocationTracker } from './components/UserLocationTracker';
  * 
  * - Switch to Google Places api (way better)
  * 
- * - Pimp out the readme for the repo
- * 
- * - Get project hosted
  * 
  */
 
@@ -53,7 +56,7 @@ function App() {
           url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
         /> */}
         <UserLocationTracker />
-        <ControlsUI />
+        <AppControls />
       </MapContainer></div>
     </>
   )
