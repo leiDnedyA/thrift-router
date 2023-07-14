@@ -1,4 +1,4 @@
-import { useMap } from 'react-leaflet';
+import { useMapEvents } from 'react-leaflet';
 import { findStoresByRadius } from '../util/StoreLookup';
 import './AppControls.css'
 import { Marker } from 'leaflet';
@@ -45,14 +45,13 @@ function AppControls() {
     const [markers, setMarkers] = useState<Marker[]>([]);
     const [places, setPlaces] = useState<Place[]>([]);
 
-    const map = useMap();
+    const map = useMapEvents({});
 
     function generateRoute() {
         setIsLoading(true);
         findStoresByRadius(location, 10000)
             .then(foundStores => {
                 setIsLoading(false);
-                console.log(foundStores)
 
                 const newMarkers: Marker[] = [];
 
@@ -72,8 +71,26 @@ function AppControls() {
             });
     }
 
+    function enableMapControls() {
+        map.scrollWheelZoom.enable()
+        map.dragging.enable();
+        map.touchZoom.enable();
+    }
+    
+    function disableMapControls() {
+        map.scrollWheelZoom.disable();
+        map.dragging.disable();
+        map.touchZoom.disable();
+    }
+
+    document.addEventListener("scroll", (e) => {
+        console.log(e.target);
+    })
+
     return <>
-        <div className="ui-overlay-container">
+        <div className="ui-overlay-container"
+            onMouseEnter={disableMapControls}
+            onMouseLeave={enableMapControls}>
             <h2 className='controls-header'>Thrift Router</h2>
             <button
                 className='button-59'
