@@ -12,8 +12,6 @@ import { UserLocationTracker } from './components/UserLocationTracker';
  *   - Find some dark mode map tiles
  *   - Fix ugly button spacing
  * 
- * - Get project hosted
- * 
  * - Figure out what the LRM demo server warning is about and fix it
  * 
  * - Add checkboxes for user to include/exclude places

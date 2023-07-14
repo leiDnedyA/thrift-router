@@ -7,8 +7,6 @@ dotenv.config();
 const PORT = process.env.API_PORT || 8080;
 const app = express();
 
-app.use(express.static('public'));
-
 app.use(placesAPIRouter);
 
 app.use(express.static('dist'));

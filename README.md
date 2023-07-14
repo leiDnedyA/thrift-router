@@ -1,5 +1,9 @@
 # Thrift Router
 
+Try it out [here](http://aydendiel.me/thrift-router)! 
+
+[http://aydendiel.me/thrift-router](http://aydendiel.me/thrift-router)
+
 Thrift router is a web app that gives users the fastest route to all of the thrift stores in their area and allows them to open the route in Google or Apple Maps.
 
 ![](https://github.com/leiDnedyA/thrift-router/blob/main/src/assets/demo.gif?raw=true)
