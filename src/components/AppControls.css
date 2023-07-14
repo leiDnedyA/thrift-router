@@ -31,6 +31,10 @@
     font-weight: bolder;
 }
 
+.link-button {
+  margin-top: 5px;
+}
+
 /* Button style from this cool site https://getcssscan.com/css-buttons-examples */
 .button-50 {
   appearance: button;

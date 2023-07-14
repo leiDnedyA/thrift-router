@@ -1,5 +1,5 @@
 import express from 'express';
-import { thriftsWithinRadius } from './api/placesAPI.js';
+import { placesAPIRouter } from './api/placesAPI.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -9,12 +9,7 @@ const app = express();
 
 app.use(express.static('public'));
 
-app.use('/api/searchCircle/pos/:lat,:lon/rad/:radius', (req, res) => {
-    thriftsWithinRadius([req.params.lat, req.params.lon], req.params.radius)
-        .then(result => {
-            res.send(result);
-        });
-});
+app.use(placesAPIRouter);
 
 app.use(express.static('dist'));
 
