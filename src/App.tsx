@@ -4,6 +4,7 @@ import './App.css'
 import { AppControls } from './components/AppControls';
 import { LocationContext } from './context/LocationContext';
 import { UserLocationTracker } from './components/UserLocationTracker';
+import { SiGithub } from 'react-icons/si';
 
 /**
  * TODO:
@@ -56,6 +57,7 @@ function App() {
         <UserLocationTracker />
         <AppControls />
       </MapContainer></div>
+      <div className='watermark'><div className='content'><p>Designed and built by <a href="http://aydendiel.me/">Ayden Diel</a>. Give Thrift Router a star on <a href="https://github.com/leiDnedyA/thrift-router/">GitHub <SiGithub /></a>!</p></div></div>
     </>
   )
 }
