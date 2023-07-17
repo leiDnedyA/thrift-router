@@ -1,0 +1,30 @@
+#permission-request-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#permission-request-overlay > .content {
+  background-color: white;
+  width: 30%;
+  padding: 15px;
+  font-size: 1.5em;
+  border-radius: 3px;
+  box-shadow: -3px 13px 23px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -3px 13px 23px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -3px 13px 23px 0px rgba(0, 0, 0, 0.75);
+}
+
+#permission-request-overlay > .content > h1,
+#permission-request-overlay > .content > p {
+  margin-left: 0;
+  margin-right: 0;
+}

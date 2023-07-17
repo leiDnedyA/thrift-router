@@ -6,6 +6,7 @@ import { Marker, Tooltip, useMapEvents } from 'react-leaflet';
 import { IoPaperPlane } from 'react-icons/io5';
 
 import './UserLocationTracker.css'
+import { PermissionRequestOverlay } from './PermissionRequestOverlay';
 
 export function UserLocationTracker() {
     const locationContext = useContext(LocationContext);
@@ -15,7 +16,28 @@ export function UserLocationTracker() {
     const isFollowingRef = useRef<boolean>();
     isFollowingRef.current = isFollowing;
 
+    const [isPermissionDenied, setIsPermissionDenied] = useState<boolean>(false);
+    const isPermissionDeniedRef = useRef<boolean>();
+    isPermissionDeniedRef.current = isPermissionDenied;
+
     function watchUserLocation() {
+        
+        function handlePermissions() {
+            navigator.permissions.query({ name: 'geolocation' })
+                .then((res) => {
+                    if (res.state == 'denied') {
+                        setIsPermissionDenied(true);
+                    }
+                    res.onchange = () => {
+                        if (res.state == 'denied') {
+                            setIsPermissionDenied(true);
+                        }
+                    }
+                })
+        }
+
+        handlePermissions();
+
         navigator.geolocation.watchPosition(
             (position) => {
                 const newLocation: LatLngTuple = [position.coords.latitude, position.coords.longitude];
@@ -89,5 +111,7 @@ export function UserLocationTracker() {
         >
             <IoPaperPlane />
         </button>
+        {isPermissionDenied &&
+            <PermissionRequestOverlay />}
     </>
 }

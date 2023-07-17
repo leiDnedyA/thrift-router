@@ -8,6 +8,11 @@ import { UserLocationTracker } from './components/UserLocationTracker';
 /**
  * TODO:
  * 
+ * - Figure out why location is blocked by default in some browsers
+ *   https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API/Using_the_Permissions_API
+ * 
+ * - Add link to my website and github at the bottom
+ * 
  * - Improve the design
  *   - Find some dark mode map tiles
  *   - Fix ugly button spacing
