@@ -1,11 +1,18 @@
+/*
+Colors:
+dark = #332e22
+light = #f4f4cb
+highlight = #ed4561
+*/
+
 .ui-overlay-container {
     padding: 10px;
-    border-radius: 3px;
-    background-color: #fff;
+    border-radius: 10px;
+    background-color: #f4f4cb;
+    color: #332e22;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
     max-height: 60%;
     max-width: 40%;
-
 
     position: absolute;
     top: 10px;
@@ -14,6 +21,20 @@
 
     display: flex;
     flex-direction: column;
+}
+
+.thrift-list::-webkit-scrollbar {
+  background-color: #f4f4cb;
+  width: 3px;
+  border-radius: 2px;
+}
+
+.thrift-list::-webkit-scrollbar-thumb {
+  background-color: #332e22;
+}
+
+.thrift-list::-webkit-scrollbar-thumb {
+
 }
 
 @media (max-width: 450px) {
@@ -35,67 +56,15 @@
   margin-top: 5px;
 }
 
-/* Button style from this cool site https://getcssscan.com/css-buttons-examples */
-.button-50 {
-  appearance: button;
-  background-color: #000;
-  background-image: none;
-  border: 1px solid #000;
-  border-radius: 4px;
-  box-shadow: #fff 4px 4px 0 0,#000 4px 4px 0 1px;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  margin: 0 5px 10px 0;
-  overflow: visible;
-  padding: 12px 40px;
-  text-align: center;
-  text-transform: none;
-  touch-action: manipulation;
-  user-select: none;
-  -webkit-user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-}
-
-.button-50:focus {
-  text-decoration: none;
-}
-
-.button-50:hover {
-  text-decoration: none;
-}
-
-.button-50:active {
-  box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
-  outline: 0;
-}
-
-.button-50:not([disabled]):active {
-  box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
-  transform: translate(2px, 2px);
-}
-
-@media (min-width: 768px) {
-  .button-50 {
-    padding: 12px 50px;
-  }
-}
-
 .button-59 {
   align-items: center;
-  background-color: #fff;
-  border: 2px solid #000;
+  border: 2px solid #332e22;
   box-sizing: border-box;
-  color: #000;
+  background-color: #f4f4cb;
+  color: #332e22;
   cursor: pointer;
   display: inline-flex;
-  fill: #000;
-  font-family: Inter,sans-serif;
+  fill: #332e22;
   font-size: 16px;
   font-weight: 600;
   height: 48px;
@@ -114,19 +83,19 @@
 }
 
 .button-59:focus {
-  color: #171e29;
+  color: #332e22;
 }
 
 .button-59:hover {
-  border-color: #06f;
-  color: #06f;
-  fill: #06f;
+  border-color: #ed4561;
+  color: #ed4561;
+  fill: #ed4561;
 }
 
 .button-59:active {
-  border-color: #06f;
-  color: #06f;
-  fill: #06f;
+  border-color: #ed4561;
+  color: #ed4561;
+  fill: #ed4561;
 }
 
 @media (min-width: 768px) {
