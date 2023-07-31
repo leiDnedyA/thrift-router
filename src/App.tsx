@@ -57,7 +57,10 @@ function App() {
         <UserLocationTracker />
         <AppControls />
       </MapContainer></div>
-      <div className='watermark'><div className='content'><p>Designed and built by <a href="http://aydendiel.me/">Ayden Diel</a>. Give Thrift Router a star on <a href="https://github.com/leiDnedyA/thrift-router/">GitHub <SiGithub /></a>!</p></div></div>
+      <div className='watermark'><div className='content'>
+        <p className='lg-txt'>Designed and built by <a href="http://aydendiel.me/">Ayden Diel</a>. Give Thrift Router a star on <a href="https://github.com/leiDnedyA/thrift-router/">GitHub <SiGithub /></a>!</p>
+        <p className='sm-txt'>By <a href="http://aydendiel.me/">Ayden Diel</a> | <a href="https://github.com/leiDnedyA/thrift-router/">GitHub <SiGithub /></a></p>
+        </div></div>
     </>
   )
 }
